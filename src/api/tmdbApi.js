@@ -20,11 +20,11 @@ export const tvType = {
 const tmdbApi = {
     getMoviesList: (type, params) => {
         const url = 'movie/' + movieType[type];
-        return axiosClient.get(url, params);
+        return axiosClient.get(url, {params});
     },
     getTvList: (type, params) => {
         const url = 'tv/' + tvType[type];
-        return axiosClient.get(url, params);
+        return axiosClient.get(url, {params});
     },
     getVideos: (cate, id) => {
         const url = category[cate] + '/' + id + '/videos';
@@ -32,11 +32,11 @@ const tmdbApi = {
     },
     search: (cate, params) => {
         const url = 'search/' + category[cate];
-        return axiosClient.get(url, params);
+        return axiosClient.get(url, {params});
     },
     detail: (cate, id, params) => {
         const url = category[cate] + '/' + id;
-        return axiosClient.get(url, params);
+        return axiosClient.get(url, {params});
     },
     credits: (cate, id) => {
         const url = category[cate] + '/' + id + '/credits';

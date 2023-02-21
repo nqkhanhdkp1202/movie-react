@@ -8,19 +8,21 @@ const axiosClient = axios.create({
     headers: {
         'Content-Type': 'application/json'
     },
-    paramsSerializer: param => queryString.stringify({ ...param, api_key: apiConfig.apiKey }),
+    paramsSerializer: {
+        serialize: params => queryString.stringify({api_key: apiConfig.apiKey, ...params}, {arrayFormat: 'bracket'}),
+    }
 });
 
 axios.interceptors.request.use(async (config) => config);
 
 axios.interceptors.response.use((response) => {
-    if (response && response.data) {
-        return response.data;
+        if (response && response.data) {
+            return response.data;
+        }
+        return response;
+    }, (error) => {
+        throw (error);
     }
-    return response;
-}, (error) => {
-    throw (error);
-}
 )
 
 export default axiosClient;

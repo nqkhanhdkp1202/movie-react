@@ -35,15 +35,17 @@ const Header = () => {
             }
         }
         window.addEventListener('scroll', shrinkHeader);
-        return {}
+        return () => {
+            window.removeEventListener('scroll', shrinkHeader);
+        };
     }, []);
-    
+
     return (
         <div ref={headerRef} className="header">
             <div className="header__wrap container">
                 <div className="logo">
                     <img src={logo} alt=""/>
-                    <Link to="/" children="tMovies"/>
+                    <Link to="/" children="kMovies"/>
                 </div>
                 <ul className="header__nav">
                     {
