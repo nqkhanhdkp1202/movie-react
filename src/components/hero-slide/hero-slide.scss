@@ -1,0 +1,15 @@
+@use '../../scss/' as *;
+
+.hero-slide {
+  margin-bottom: 3rem;
+}
+
+.hero-slide__item {
+  height: 100vh;
+  padding: 9rem 0;
+  width: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
