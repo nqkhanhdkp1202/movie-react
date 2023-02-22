@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import {useNavigate} from "react-router-dom";
 
@@ -9,6 +9,9 @@ import Button, {OutlineButton} from "../button/Button.jsx";
 
 import tmdbApi, {movieType} from "../../api/tmdbApi.js";
 import apiConfig from "../../api/apiConfig.js";
+
+import './hero-slide.scss';
+import Modal, {ModalContent} from "../modal/Modal.jsx";
 
 
 const HeroSlide = () => {
@@ -43,6 +46,9 @@ const HeroSlide = () => {
                     ))
                 }
             </Swiper>
+            {
+                // movieItems.map((e, i) => <ModalTrailer id={e.id} key={i}/>)
+            }
         </div>
     );
 };
@@ -56,8 +62,8 @@ const HeroSlideItem = props => {
 
     return (
         <div className={`hero-slide__item ${props.className}`} style={{backgroundImage: `url(${background})`}}>
-            <div className="hero-slide__content container">
-                <div className="hero-slide__content__info">
+            <div className="hero-slide__item__content container">
+                <div className="hero-slide__item__content__info">
                     <h2 className="title">{item.title}</h2>
                     <div className="overview">{item.overview}</div>
                     <div className="btns">
@@ -65,11 +71,27 @@ const HeroSlideItem = props => {
                         <OutlineButton onClick={() => console.log('trailer')}>Watch Trailer</OutlineButton>
                     </div>
                 </div>
-                <div className="hero-slide__content__poster">
+                <div className="hero-slide__item__content__poster">
                     <img src={apiConfig.w500Image(item.poster_path)} alt=""/>
                 </div>
             </div>
         </div>
+    )
+}
+
+const ModalTrailer = props => {
+    const item = props.item;
+
+    const iframeRef = useRef(null);
+
+    const onClose = () => iframeRef.current.setAttribute('src', '');
+
+    return (
+        <Modal active={false} id={`modal_${item.id}`}>
+            <ModalContent onClose={onClose()}>
+                <iframe ref={iframeRef} width="100%" height="500px" title="Trailer"></iframe>
+            </ModalContent>
+        </Modal>
     )
 }
 
