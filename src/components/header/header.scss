@@ -21,8 +21,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
-  transition: height .3s ease, background-color .3s ease;
+  z-index: 999;
+  transition: height 0.3s ease, background-color 0.3s ease;
 
   &.shrink {
     height: $header-shrink-height;
@@ -53,7 +53,7 @@
       font-size: 1.5rem;
 
       a {
-        transition: background-color .3s ease;
+        transition: background-color 0.3s ease;
       }
 
       &::after {
@@ -63,12 +63,13 @@
         left: 50%;
         transform: translate(-50%);
         width: 0;
-        transition: width .5s ease;
+        transition: width 0.5s ease;
         height: 2px;
         background-color: $main-cl;
       }
 
-      &.active::after, &:hover::after {
+      &.active::after,
+      &:hover::after {
         width: 100%;
       }
     }
