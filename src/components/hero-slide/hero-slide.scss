@@ -1,4 +1,4 @@
-@use '../../scss/' as *;
+@use "../../scss/" as *;
 
 .hero-slide {
   margin-bottom: 3rem;
@@ -37,7 +37,6 @@
   }
 
   &__content {
-    margin-top: 36px;
     @include flex(center, center);
 
     &__info {
@@ -72,10 +71,12 @@
         margin-left: 1rem;
       }
 
-      .btns, .title, .overview {
+      .btns,
+      .title,
+      .overview {
         opacity: 0;
         transform: translateY(-100px);
-        transition: transform .5s ease, opacity .5s ease;
+        transition: transform 0.5s ease, opacity 0.5s ease;
       }
     }
 
@@ -90,7 +91,7 @@
         box-shadow: $box-shadow;
 
         transform: scale(0);
-        transition: transform .5s ease;
+        transition: transform 0.5s ease;
       }
     }
 
@@ -106,21 +107,23 @@
   }
 
   &.active > &__content > &__content__info {
-    .btns, .title, .overview {
+    .btns,
+    .title,
+    .overview {
       opacity: 1;
       transform: translateY(0);
     }
 
     .title {
-      transition-delay: .1s, .1s;
+      transition-delay: 0.1s, 0.1s;
     }
 
     .overview {
-      transition-delay: .3s, .3s;
+      transition-delay: 0.3s, 0.3s;
     }
 
     .btns {
-      transition-delay: .5s, .5s;
+      transition-delay: 0.5s, 0.5s;
     }
   }
 }
