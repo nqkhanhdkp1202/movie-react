@@ -82,3 +82,23 @@ iframe {
 .section__header {
   @include flex(center, space-between);
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba($color: $main-cl, $alpha: 0.2);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba($color: $main-cl, $alpha: 0.5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba($color: $main-cl, $alpha: 0.8);
+}

@@ -5,8 +5,6 @@ import './movielist.scss'
 
 import tmdbApi, { category } from '../../api/tmdbApi';
 
-import apiConfig from '../../api/apiConfig';
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from '../movie-card/MovieCard';
 
@@ -18,7 +16,6 @@ const MovieList = props => {
         const getList = async () => {
             const params = {};
             let response = null;
-
             if (props.type !== "similar") {
                 switch (props.category) {
                     case category.movie:
@@ -43,7 +40,7 @@ const MovieList = props => {
             <Swiper grabCursor={true} slidesPerView={'auto'} spaceBetween={20}>
                 {
                     items.map((e, i) => (<SwiperSlide key={i}>
-                        <MovieCard item={e}></MovieCard>
+                        <MovieCard category={props.category} item={e}></MovieCard>
                     </SwiperSlide>))
                 }
             </Swiper>
