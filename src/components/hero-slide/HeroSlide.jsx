@@ -46,6 +46,9 @@ const HeroSlide = () => {
                     ))
                 }
             </Swiper>
+            {
+                movieItems.map((e, i) => (<ModalTrailer key={i} item={e} />))
+            }
         </div>
     );
 };
@@ -58,20 +61,17 @@ const HeroSlideItem = props => {
     let background = apiConfig.originalImage(item.backdrop_path ? item.backdrop_path : item.poster_path)
 
     const setModalActive = async () => {
-        const modal = document.querySelector(`#modal__${item.id}`);
+        let modal = document.getElementById(`modal__${item.id}`);
 
         const videos = await tmdbApi.getVideos(category.movie, item.id);
 
-        console.log(videos);
-
         if (videos.data.results) {
             let videoURL = "https://www.youtube.com/embed/" + videos.data.results[0].key + "?autoplay=1";
-            modal.querySelector(".modal__content > iframe").setAttribute("src", videoURL);
+            modal.querySelector(".modal__content > iframe").setAttribute('src', videoURL);
         }
         else {
             modal.querySelector(".modal__content > iframe").innerHTML = "No trailer";
         }
-
         modal.classList.toggle("active");
     }
 
