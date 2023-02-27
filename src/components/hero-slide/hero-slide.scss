@@ -96,7 +96,9 @@
     }
 
     @include tablet {
-      display: none;
+      z-index: 99;
+      position: relative;
+      transform: translateY(50%);
     }
   }
 
